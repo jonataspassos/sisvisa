@@ -31,7 +31,9 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'empresa.apps.EmpresaConfig',
+    'veiculo.apps.VeiculoConfig',
+    'pessoa.apps.PessoaConfig',
+    'endereco.apps.EnderecoConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

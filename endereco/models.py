@@ -18,35 +18,3 @@ class Endereco(models.Model):
 
     def __str__(self):
         return self.logradouro[:30] + ' ... ' + self.numero +' ' + self.complemento + ', '+ self.bairro
-    
-#pessoa
-    
-class Empresa(models.Model):
-    class Meta:
-        verbose_name = "Empresa"
-        verbose_name_plural = "Empresas"
-    #cnpj
-    #razao_social
-    #atividade
-    # inscrição-estadual (IE)
-    # proprietarios - pessoa
-    # responsaveis tecnicos - certificacao https://docs.djangoproject.com/en/5.0/topics/db/models/#extra-fields-on-many-to-many-relationships
-    # endereco - registra no documento também
-
-class Veiculo(models.Model):
-    class Meta:
-        verbose_name = "Veículo"
-        verbose_name_plural = "Veículos"
-    #empresa
-    #marca
-    #modelo
-    #ano
-    #chassi
-    #crlv
-    #renavam
-    #proprietarios (é pra ser um só)
-    #responsavel - certificacao
-    #placa
-    #atividade
-
-
