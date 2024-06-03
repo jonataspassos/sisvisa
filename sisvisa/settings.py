@@ -34,6 +34,7 @@ INSTALLED_APPS = [
     'veiculo.apps.VeiculoConfig',
     'pessoa.apps.PessoaConfig',
     'endereco.apps.EnderecoConfig',
+    'polymorphic',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
