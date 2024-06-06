@@ -30,8 +30,4 @@ class PessoaJuridica(Pessoa):
     ie = models.CharField(max_length=30, verbose_name="IE",null=False,blank=False)#Inscrição Estadual
     proprietario = models.ManyToManyField(PessoaFisica, related_name="Proprietario")
     responsavel_tecnico = models.ManyToManyField(PessoaFisica, related_name="ResponsavelTecnico")# responsaveis tecnicos - certificacao https://docs.djangoproject.com/en/5.0/topics/db/models/#extra-fields-on-many-to-many-relationships
-    endereco = models.OneToOneField(Endereco,on_delete=models.CASCADE)# endereco - registra no documento também
-    
-
-
-
+    endereco = models.OneToOneField(Endereco,on_delete=models.RESTRICT)# endereco - registra no documento também

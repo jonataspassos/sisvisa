@@ -1,5 +1,7 @@
 # https://django-polymorphic.readthedocs.io/en/stable/admin.html
 
+# https://medium.com/@SiddyZen/create-embedded-models-using-django-admin-3ecc38a00879
+
 from django.contrib import admin
 from polymorphic.admin import PolymorphicParentModelAdmin, PolymorphicChildModelAdmin, PolymorphicChildModelFilter
 # from .models import ModelA, ModelB, ModelC, StandardModel
