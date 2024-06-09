@@ -1,0 +1,32 @@
+TI Termo de intimação
+Tipo de FISCAL
+Tipos de Certificação
+Interdição (fecha o protocolo *)
+    - tramite?
+    - Cancelar?
+Multa - Trâmite (pago)
+    - Cancelar?
+Disposições para multa
+Infrações - tramite após o auto ?
+    - Aguardando defesa?
+    - Cancelar?
+
+
+BEGIN;
+--
+-- Create model Endereco
+--
+CREATE TABLE "empresa_endereco" (
+    "id" integer NOT NULL PRIMARY KEY AUTOINCREMENT, 
+    "logradouro" varchar(50) NOT NULL, 
+    "numero" varchar(10) NOT NULL, 
+    "complemento" varchar(30) NULL, 
+    "bairro" varchar(30) NOT NULL, 
+    "cidade" varchar(30) NOT NULL, 
+    "estado" varchar(30) NOT NULL, 
+    "cep" varchar(30) NOT NULL, 
+    "created_at" datetime NOT NULL, 
+    "updated_at" datetime NOT NULL
+);
+
+COMMIT;
