@@ -70,6 +70,12 @@ class Endereco(models.Model):
 
     def __str__(self):
         return self.logradouro[:30] + ' ... ' + self.numero +' ' + self.complemento + ', '+ self.bairro
+    
+    def ObjectClass(self):
+        return EnderecoClass(self.logradouro,self.numero,self.complemento,self.bairro,self.cidade,self.estado,self.cep)
+    
+    def ObjectField(*args,**kwargs):
+        return EnderecoField(*args,**kwargs)
 
     # def save(self, *args, **kwargs):
     #     self.endereco = EnderecoClass(self.logradouro,self.numero,self.complemento,self.bairro,self.cidade,self.estado,self.cep)

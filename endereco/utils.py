@@ -15,7 +15,7 @@ class Endereco:
                 self.cep = end.cep
             except:
                 raise ValidationError(_("Invalid input for a Endereco instance"))
-        elif numero==None or complemento==None or bairro==None or cidade==None or estado==None or cep==None:
+        elif numero==None or bairro==None or cidade==None or estado==None:
             raise ValidationError(_("Invalid input for a Endereco instance"))
         else:
             self.logradouro = logradouro
