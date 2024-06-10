@@ -1,6 +1,5 @@
 from django.db import models
 from .utils import Endereco as EnderecoClass
-from .forms import EnderecoField
 
 # https://anilkumarvalluru.medium.com/designing-and-implementing-custom-fields-in-django-creating-dynamic-data-models-b57f9f935467
 #
@@ -33,16 +32,12 @@ class EnderecoField(models.Field):
         return EnderecoClass.parse(value)    
     
     def get_db_prep_value(self, value, connection, prepared=False):
-        if value is not None:
+        if value is not None and value != '':
             return value.tostr()
         return None
     
     # def formfield(self, **kwargs):
-    #     # This is a fairly standard way to set up some defaults
-    #     # while letting the caller override them.
-    #     defaults = {"form_class": EnderecoField}
-    #     defaults.update(kwargs)
-    #     return super().formfield(**defaults)
+    #    pass
 
     def formfield(self, **kwargs):
         return super().formfield(form_class=EnderecoField,**kwargs)
@@ -68,20 +63,14 @@ class Endereco(models.Model):
     estado = models.CharField(max_length=30, verbose_name="Estado",null=False,blank=False)
     cep = models.CharField(max_length=15, verbose_name="CEP",null=True,blank=True)
 
+    # endereco = EnderecoField(verbose_name='Endereço Interno',default='',blank=True,null=True)
+
     created_at = models.DateTimeField(auto_now_add=True,verbose_name="Criado em")
     updated_at = models.DateTimeField(auto_now=True, verbose_name="Atualizado em")
 
     def __str__(self):
         return self.logradouro[:30] + ' ... ' + self.numero +' ' + self.complemento + ', '+ self.bairro
-    
-class Endereco3(models.Model):
-    class Meta:
-        verbose_name = "Endereço 3"
-        verbose_name_plural = "Endereços 3"
-    endereco = EnderecoField(verbose_name="Endereço")
-    
-    created_at = models.DateTimeField(auto_now_add=True,verbose_name="Criado em")
-    updated_at = models.DateTimeField(auto_now=True, verbose_name="Atualizado em")
 
-    def __str__(self):
-        return str(self.endereco)
+    # def save(self, *args, **kwargs):
+    #     self.endereco = EnderecoClass(self.logradouro,self.numero,self.complemento,self.bairro,self.cidade,self.estado,self.cep)
+    #     super(Endereco, self).save(*args, **kwargs)
