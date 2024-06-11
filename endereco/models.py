@@ -1,9 +1,18 @@
 from django.db import models
 from .utils import Endereco as EnderecoClass
+from modelserial.models import FieldSerial
 
 # https://anilkumarvalluru.medium.com/designing-and-implementing-custom-fields-in-django-creating-dynamic-data-models-b57f9f935467
+# https://medium.com/@mustahibmajgaonkar/how-to-reset-django-migrations-6787b2a1e723
 #
 #from django.utils.translation import gettext_lazy as _
+
+class EnderecoField(FieldSerial):
+    description = "Campo endereço completo"
+    def __init__(self, *args, **kwargs):
+        kwargs["max_length"] = 250
+        super().__init__(EnderecoClass,*args, **kwargs)
+
         
 class EnderecoField(models.Field):
     description = "Campo endereço completo"
@@ -23,7 +32,7 @@ class EnderecoField(models.Field):
         return EnderecoClass.parse(value)
 
     def to_python(self, value):
-        if isinstance(value, self.Endereco):
+        if isinstance(value, EnderecoClass):
             return value
 
         if value is None:
@@ -39,8 +48,8 @@ class EnderecoField(models.Field):
     # def formfield(self, **kwargs):
     #    pass
 
-    def formfield(self, **kwargs):
-        return super().formfield(form_class=EnderecoField,**kwargs)
+    # def formfield(self, **kwargs):
+    #     return super().formfield(form_class=EnderecoField,**kwargs)
 
     def get_internal_type(self):
         return "CharField"
